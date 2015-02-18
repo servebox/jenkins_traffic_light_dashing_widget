@@ -1,0 +1,213 @@
+$red-color-dark:  #910000;
+$orange-color-dark:  #DD690B;
+$green-color-dark:  #328743;
+$red-color:  #B20000;
+$orange-color:  #F58A31;
+$green-color:  #44B65A;
+
+@mixin radius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -msie-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-bottom-left-radius($radius){
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-bottom-left-radius: $radius;
+  -msie-border-bottom-left-radius: $radius;
+  -o-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius){
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-bottom-right-radius: $radius;
+  -msie-border-bottom-right-radius: $radius;
+  -o-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius){
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+  -msie-border-top-right-radius: $radius;
+  -o-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius){
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+  -msie-border-top-left-radius: $radius;
+  -o-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin top-shade(){
+  position: absolute;
+  top: 4px;
+  width: 25px;
+  height: 25px;
+  background-color: #34495e;
+}
+
+@mixin bottom-shade(){
+  position: absolute;
+  top: 24px;
+  width: 25px;
+  height: 20px;
+  background-color: #223440;
+}
+
+@mixin bottom-shade-after(){
+  content: '';
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 13px;
+  height: 25px;
+}
+
+.traffic-light .light-outer .light-inner .light.red{
+  background-color: $red-color-dark;
+}
+.traffic-light .light-outer .light-inner .light.red::before, .red.bottom-shade::after, .widget-jenkins-traffic-light.red {
+  background-color: $red-color;
+}
+.traffic-light .light-outer .light-inner .light.orange{
+  background-color: $orange-color-dark;
+}
+.traffic-light .light-outer .light-inner .light.orange::before, .orange.bottom-shade::after, .widget-jenkins-traffic-light.orange {
+  background-color: $orange-color;
+}
+.traffic-light .light-outer .light-inner .light.green {
+  background-color: $green-color-dark;
+}
+.traffic-light .light-outer .light-inner .light.green::before, .green.bottom-shade::after, .widget-jenkins-traffic-light.green {
+  background-color: $green-color;
+}
+/* spec style */
+.traffic-light {
+  margin: auto;
+  .light-outer::after {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 88%;
+    height: 4px;
+    background-color: #34495e;
+  }
+  .light-outer:nth-of-type(3)::after {
+    height: 6px;
+    @include radius(0 0 6px 6px);
+  }
+  .light-outer {
+    margin: auto;
+    position: relative;
+    width: 65px;
+    height: 47px;
+    @include radius(2px);
+    background-color: #34495e;
+    margin-bottom: 2px;
+    .light-inner {
+      width: 43px;
+      height: 43px;
+      padding: 2px;
+      margin: 0px auto;
+      background-color: #223440;
+      @include radius(2px);
+      .light {
+        width: 100%;
+        height: 100%;
+        @include radius(50%);
+      }
+      .light::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 50%;
+        @include radius(21px 21px 0 0);
+        -webkit-transform: rotate(315deg);
+        -moz-transform: rotate(315deg);
+        -o-transform: rotate(315deg);
+        -msie-transform: rotate(315deg);
+        transform: rotate(315deg);
+        -webkit-transform-origin: 21px 21px 21px;
+        -moz-transform-origin: 21px 21px 21px;
+        -o-transform-origin: 21px 21px 21px;
+        -msie-transform-origin: 21px 21px 21px;
+        transform-origin: 21px 21px 21px;
+      }
+    }
+    .light-left-top-shade {
+      @include top-shade();
+      left: -25px;
+      @include border-bottom-left-radius(15px 25px);
+    }
+    .light-right-top-shade {
+      @include top-shade();
+      right: -25px;
+      @include border-bottom-right-radius(15px 25px);
+    }
+    .light-left-bottom-shade {
+      @include bottom-shade();
+      left: -25px;
+    }
+    .light-right-bottom-shade {
+      @include bottom-shade();
+      right: -25px;
+    }
+    .light-left-bottom-shade::after {
+      @include bottom-shade-after();
+      left: 0;
+      @include border-top-right-radius(15px 25px);
+    }
+    .light-right-bottom-shade::after {
+      @include bottom-shade-after();
+      right: 0;
+      @include border-top-left-radius(15px 25px);
+    }
+
+    .first-light-decorate {
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      top: -6px;
+      display: block;
+      width: 88%;
+      height: 6px;
+      background-color: #34495e;
+      @include radius(6px 6px 0 0);
+    }
+    .first-light-decorate::before {
+      position: absolute;
+      margin: 0 auto;
+      content: '';
+      left: 0;
+      right: 0;
+      top: -4px;
+      display: block;
+      width: 84%;
+      height: 4px;
+      background-color: #34495e;
+      @include radius(4px 4px 0 0);
+    }
+    .first-light-decorate::after {
+      position: absolute;
+      margin: 0 auto;
+      content: '';
+      left: 0;
+      right: 0;
+      top: -8px;
+      display: block;
+      width: 70%;
+      height: 4px;
+      background-color: #34495e;
+      @include radius(2px 2px 0 0);
+    }
+  }
+}
