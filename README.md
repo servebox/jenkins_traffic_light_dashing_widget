@@ -12,9 +12,11 @@ To use this widget, copy `jenkins_traffic_light.html`, `jenkins_traffic_light.co
 
 To include the widget in a dashboard, add the following snippet to the dashboard layout file:
 
+```
 <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
 <div data-id="jenkins" data-view="JenkinsTrafficLight"></div>
 </li>
+```
 
 ##Settings
 
