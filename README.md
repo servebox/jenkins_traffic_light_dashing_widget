@@ -14,7 +14,7 @@ To include the widget in a dashboard, add the following snippet to the dashboard
 
 ```
 <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-<div data-id="jenkins" data-view="JenkinsTrafficLight"></div>
+<div data-id="jenkins" data-view="JenkinsTrafficLight" data-title="My Jenkins Job Name"></div>
 </li>
 ```
 
